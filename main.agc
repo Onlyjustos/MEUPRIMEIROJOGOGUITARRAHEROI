@@ -10,10 +10,11 @@
 
 
 
-menuImg = loadimage ("GUITARRAHEROIMENU.png")
+menuImg = loadimage ("menu.png")
 menuSP = CreateSprite(menuIMG)
 setspritesize(menuIMG,1024,768)
 SetSpriteDepth(menusp,1)
+
 
 createsprite(LoadImageResized("fundo provisorio kkk.png",4,3.2,0))  //background do jogo
 botao1IMG=loadimage("botaostart.png")   //botao que começa o jogo
@@ -23,7 +24,10 @@ SetSpritePosition (botao1,320,275)
 SetSpriteDepth(botao1,10)
 SetSpriteColor(botao1,0,0,0,255)
 
-
+fogo = CreateSprite(LoadImage("fogo.png"))
+SetSpriteDepth(fogo,1)
+SetSpritePosition(fogo,310,650)
+SetSpriteVisible(fogo,0)
 LoadImage (1,"verde.png")   //imagens das sprites 
 LoadImage (2,"vermelho.png")
 loadimage (3,"amarelo.png")
@@ -100,7 +104,7 @@ setspritesize(botaolaranja,100,100)
 //variveis de controle
   
 global  score as float = 10    //incrementa a pontuacao
-global  pontuacao as float= 0	//pontuacao a ser mostrada
+global  pontuacao = 0	//pontuacao a ser mostrada
 global 	bonus as float  = 1.0	//multiplicador do incremento de pontuacao
 global  hp = 0  // vida
 segundoatual as integer[5] 
@@ -119,7 +123,9 @@ do
 		
 		gosub menuprincipal
 		gosub marcamelhorscore
-		gosub pegamelhorscore           
+		pontuacao = 0
+		gosub pegamelhorscore  
+		         
 	endif
 		
 	if(menu = 0)
@@ -143,6 +149,7 @@ loop
 return
 
 menuprincipal:
+	bonusreal = 0
 	gosub escondesprite
 	gosub mouseposicao
 	

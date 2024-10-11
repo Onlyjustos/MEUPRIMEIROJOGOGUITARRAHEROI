@@ -11,7 +11,8 @@ criaNotas:         //funciona como um timer para quando vai lançar a proxima li
 		if(Getseconds()=2+tempodomenu)
 			PlayMusic(10)
 		endif
-		if(GetSeconds()=220)
+		if(GetSeconds()=91)
+			StopMusic()
 			menu=1
 			
 			
@@ -91,7 +92,7 @@ function criarastroverde()
 	verde.tamanho = 125
 	verde.spriteid = CreateSprite(11)
 	SetSpriteSize (verde.spriteid,40,verde.tamanho)
-	SetSpriteDepth(verde.spriteid,3)
+	SetSpriteDepth(verde.spriteid,2)
 	SetSpritePosition(verde.spriteid, verde.x, verde.y)
 	rastroAtivos.Insert(verde)
 	
@@ -119,7 +120,7 @@ function criarastrovermelho()
 	vermelho.tamanho = 125
 	vermelho.spriteid = CreateSprite(12)
 	SetSpriteSize (vermelho.spriteid,40,vermelho.tamanho)
-	SetSpriteDepth(vermelho.spriteid,3)
+	SetSpriteDepth(vermelho.spriteid,2)
 	SetSpritePosition(vermelho.spriteid, vermelho.x, vermelho.y)
 	rastroAtivos.Insert(vermelho)
 	
@@ -148,7 +149,7 @@ function criarastroamarelo()
 	amarelo.tamanho = 125
 	amarelo.spriteid = CreateSprite(14)
 	SetSpriteSize (amarelo.spriteid,40,amarelo.tamanho)
-	SetSpriteDepth(amarelo.spriteid,3)
+	SetSpriteDepth(amarelo.spriteid,2)
 	SetSpritePosition(amarelo.spriteid, amarelo.x, amarelo.y)
 	rastroAtivos.Insert(amarelo)
 	
@@ -177,7 +178,7 @@ function criarastroAzul()
 	azul.tamanho = 125
 	azul.spriteid = CreateSprite(13)
 	SetSpriteSize (azul.spriteid,40,azul.tamanho)
-	SetSpriteDepth(azul.spriteid,3)
+	SetSpriteDepth(azul.spriteid,2)
 	SetSpritePosition(azul.spriteid, azul.x, azul.y)
 	rastroAtivos.Insert(azul)
 	
@@ -204,7 +205,7 @@ function criarastrolaranja()
 	laranja.tamanho = 125
 	laranja.spriteid = CreateSprite(14)
 	SetSpriteSize (laranja.spriteid,40,laranja.tamanho)
-	SetSpriteDepth(laranja.spriteid,3)
+	SetSpriteDepth(laranja.spriteid,2)
 	SetSpritePosition(laranja.spriteid, laranja.x, laranja.y)
 	rastroAtivos.Insert(laranja)
 	
@@ -295,43 +296,73 @@ return
 //deleta os rastros quando pressionado
 deletarastro:
 	
-	if(rastroAtivos[i].y>560 and rastroAtivos[i].X=330 and rastroAtivos[i].tamanho>0)
-			if ( GetRawKeyState(65))
+	if(rastroAtivos[i].y>560 and rastroAtivos[i].X=330 and rastroAtivos[i].tamanho>0 and rastroAtivos[i].y>-10)
+			if( GetRawKeyState(65))
 					
 				rastroAtivos[i].tamanho = rastroAtivos[i].tamanho-10
 				SetSpriteSize(rastroAtivos[i].spriteid,40,rastroAtivos[i].tamanho)	
-				if(rastroAtivos[i].tamanho=0)
-					DeleteSprite(rastroAtivos[i].spriteid)
-				endif
+				SetSpritePosition(fogo,310,650)
+				SetSpriteVisible(fogo,0)
+			endif
+			if(rastroAtivos[i].tamanho<0)
+				DeleteSprite(rastroAtivos[i].spriteid)
+			
 			endif		
 	endif
 	
-	if(rastroAtivos[i].y>570 and rastroAtivos[i].X=480 and rastroAtivos[i].tamanho>0)
+	if(rastroAtivos[i].y>570 and rastroAtivos[i].X=480 and rastroAtivos[i].tamanho>0 and rastroAtivos[i].y>-10)
 			if ( GetRawKeyState(83))
-					
+				
 				rastroAtivos[i].tamanho = rastroAtivos[i].tamanho-10
 				SetSpriteSize(rastroAtivos[i].spriteid,40,rastroAtivos[i].tamanho)	
+				
+				SetSpritePosition(fogo,450,650)
+				SetSpriteVisible(fogo,0)
+				
+			endif
+			if(rastroAtivos[i].tamanho<0)
+				DeleteSprite(rastroAtivos[i].spriteid)
 			endif		
 	endif
-	if(rastroAtivos[i].y>570 and rastroAtivos[i].X=620 and rastroAtivos[i].tamanho>0)
+	if(rastroAtivos[i].y>570 and rastroAtivos[i].X=620 and rastroAtivos[i].tamanho>0 and rastroAtivos[i].y>-10)
 			if ( GetRawKeyState(74))
 				
 				rastroAtivos[i].tamanho = rastroAtivos[i].tamanho-10
 				SetSpriteSize(rastroAtivos[i].spriteid,40,rastroAtivos[i].tamanho)	
-			endif		
+				
+				SetSpritePosition(fogo,580,650)
+				SetSpriteVisible(fogo,0)
+				
+			endif
+			if(rastroAtivos[i].tamanho<0)
+				DeleteSprite(rastroAtivos[i].spriteid)
+			endif			
 	endif
-	if(rastroAtivos[i].y>570 and rastroAtivos[i].X=765 and rastroAtivos[i].tamanho>0)
+	if(rastroAtivos[i].y>570 and rastroAtivos[i].X=765 and rastroAtivos[i].tamanho>0 and rastroAtivos[i].y>-10)
 			if ( GetRawKeyState(75))
+				
 				rastroAtivos[i].tamanho = rastroAtivos[i].tamanho-10
 				SetSpriteSize(rastroAtivos[i].spriteid,40,rastroAtivos[i].tamanho)	
-			endif		
+				
+				SetSpritePosition(fogo,720,650)
+				SetSpriteVisible(fogo,0)
+				
+			endif
+			if(rastroAtivos[i].tamanho<0)
+				DeleteSprite(rastroAtivos[i].spriteid)
+			endif			
 	endif
-	if(rastroAtivos[i].y>570 and rastroAtivos[i].X=885 and rastroAtivos[i].tamanho>0)
+	if(rastroAtivos[i].y>570 and rastroAtivos[i].X=885 and rastroAtivos[i].tamanho>0 and rastroAtivos[i].y>-10)
 			if ( GetRawKeyState(76))
 					
 				rastroAtivos[i].tamanho = rastroAtivos[i].tamanho-10
 				SetSpriteSize(rastroAtivos[i].spriteid,40,rastroAtivos[i].tamanho)	
-			endif		
+				SetSpritePosition(fogo,857,650)
+				SetSpriteVisible(fogo,0)
+			endif
+			if(rastroAtivos[i].tamanho<0)
+				DeleteSprite(rastroAtivos[i].spriteid)
+			endif			
 	endif
 	
 perdeuNota: //pune a perda de nota e deleta ela
