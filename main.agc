@@ -6,17 +6,13 @@
 #include "funcoesnotas.agc" //inclui os outros arquivos nesse codigo
 #insert "tela.agc" 
 
-
-
-
-
 menuImg = loadimage ("menu.png")
 menuSP = CreateSprite(menuIMG)
 setspritesize(menuIMG,1024,768)
 SetSpriteDepth(menusp,1)
 
-
 createsprite(LoadImageResized("fundo provisorio kkk.png",4,3.2,0))  //background do jogo
+
 botao1IMG=loadimage("botaostart.png")   //botao que começa o jogo
 botao1=CreateSprite(0)
 setspritesize(botao1,400,130)
@@ -24,10 +20,6 @@ SetSpritePosition (botao1,320,275)
 SetSpriteDepth(botao1,10)
 SetSpriteColor(botao1,0,0,0,255)
 
-fogo = CreateSprite(LoadImage("fogo.png"))
-SetSpriteDepth(fogo,1)
-SetSpritePosition(fogo,310,650)
-SetSpriteVisible(fogo,0)
 LoadImage (1,"verde.png")   //imagens das sprites 
 LoadImage (2,"vermelho.png")
 loadimage (3,"amarelo.png")
@@ -99,14 +91,13 @@ setspritesize(botaoAzul,100,100)
 setspritesize(botaolaranja,100,100)
 
 
-	
 
 //variveis de controle
   
 global  score as float = 10    //incrementa a pontuacao
 global  pontuacao = 0	//pontuacao a ser mostrada
 global 	bonus as float  = 1.0	//multiplicador do incremento de pontuacao
-global  hp = 0  // vida
+global  hp = 100  // vida
 segundoatual as integer[5] 
 valordosegundoatual#= -1
 atualizouosegundo = 1 //1 para verdade, 0 para falso
@@ -120,7 +111,7 @@ SetSpriteVisible(mouse,0)
 do	
 	
 	if(menu = 1)
-		
+		gosub movenotas
 		gosub menuprincipal
 		gosub marcamelhorscore
 		pontuacao = 0
@@ -130,7 +121,7 @@ do
 		
 	if(menu = 0)
 		if(GetRawKeyPressed(27))
-			StopMusic()
+			
 			segundoatualI=0
 			menu=1
 				
@@ -141,6 +132,7 @@ do
 		gosub moveNotas
 		gosub escrevescore
 		
+		
 	endif	
 
 Sync()
@@ -149,6 +141,7 @@ loop
 return
 
 menuprincipal:
+	StopMusic()
 	bonusreal = 0
 	gosub escondesprite
 	gosub mouseposicao
@@ -163,9 +156,6 @@ menuprincipal:
 		menu = 0
 			
 	endif
-	
-
-	
 	
 return	
 

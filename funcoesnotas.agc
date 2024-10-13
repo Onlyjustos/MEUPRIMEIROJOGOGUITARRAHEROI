@@ -8,10 +8,10 @@ criaNotas:         //funciona como um timer para quando vai lançar a proxima li
 			valordosegundoatual = GetMilliseconds() + 90
 		endif 
 		
-		if(Getseconds()=2+tempodomenu)
+		if(Getseconds()=2+tempodomenu)	//começa o jogo
 			PlayMusic(10)
 		endif
-		if(GetSeconds()=91)
+		if(GetSeconds()=91) //acaba o jogo
 			StopMusic()
 			menu=1
 			
@@ -183,6 +183,7 @@ function criarastroAzul()
 	rastroAtivos.Insert(azul)
 	
 endfunction
+
 function crialaranja()
 	nota as notas
 	nota.x=885
@@ -197,6 +198,7 @@ function crialaranja()
 	
 	notasAtivas.Insert(nota)
 endfunction
+
 function criarastrolaranja()
 	laranja as rastro
 	laranja.x=885
@@ -214,14 +216,10 @@ endfunction
 acertouNota:     //analisa se o clique acertou ou nao uma nota vermelha
 	
 	if(GetSpriteExists(notasAtivas[i].spriteID))
-		if (GetRawKeypressed(65)) //analisa se o clique acertou ou nao uma nota verde
-																																
+		if (GetRawKeypressed(65)) //analisa se o clique acertou ou nao uma nota verde																													
 			if (GetSpriteCollision ( botaoVerde , notasAtivas[i].spriteID ))
 				gosub marcascore	
-				
 				DeleteSprite(notasAtivas[i].spriteID)  
-					
-			
 			endif
 		endif
 	endif
@@ -248,12 +246,12 @@ acertouNota:     //analisa se o clique acertou ou nao uma nota vermelha
 		
 	if(GetSpriteExists(notasAtivas[i].spriteID))		
 		if (GetRawKeyPressed(75))	 //analisa se o clique acertou ou nao uma nota azul
-				if (GetSpriteCollision ( botaoazul, notasAtivas[i].spriteid ))
-					gosub marcascore	
+			if (GetSpriteCollision ( botaoazul, notasAtivas[i].spriteid ))
+				gosub marcascore	
 					
-					DeleteSprite(notasAtivas[i].spriteID) //deleta a sprite que foi tocada
+				DeleteSprite(notasAtivas[i].spriteID) //deleta a sprite que foi tocada
 					
-				endif
+			endif
 		endif
 	endif
 
@@ -296,13 +294,13 @@ return
 //deleta os rastros quando pressionado
 deletarastro:
 	
-	if(rastroAtivos[i].y>560 and rastroAtivos[i].X=330 and rastroAtivos[i].tamanho>0 and rastroAtivos[i].y>-10)
+	if(rastroAtivos[i].y>560 and rastroAtivos[i].X=330 and rastroAtivos[i].tamanho>0 and rastroAtivos[i].y>-10)             //verifica se o rastro ta no alcance do botao verde
 			if( GetRawKeyState(65))
 					
 				rastroAtivos[i].tamanho = rastroAtivos[i].tamanho-10
 				SetSpriteSize(rastroAtivos[i].spriteid,40,rastroAtivos[i].tamanho)	
-				SetSpritePosition(fogo,310,650)
-				SetSpriteVisible(fogo,0)
+				
+				
 			endif
 			if(rastroAtivos[i].tamanho<0)
 				DeleteSprite(rastroAtivos[i].spriteid)
@@ -310,55 +308,41 @@ deletarastro:
 			endif		
 	endif
 	
-	if(rastroAtivos[i].y>570 and rastroAtivos[i].X=480 and rastroAtivos[i].tamanho>0 and rastroAtivos[i].y>-10)
-			if ( GetRawKeyState(83))
-				
+	if(rastroAtivos[i].y>570 and rastroAtivos[i].X=480 and rastroAtivos[i].tamanho>0 and rastroAtivos[i].y>-10)				 //verifica se o rastro ta no alcance do botao vermelho				
+			if ( GetRawKeyState(83))	
 				rastroAtivos[i].tamanho = rastroAtivos[i].tamanho-10
-				SetSpriteSize(rastroAtivos[i].spriteid,40,rastroAtivos[i].tamanho)	
-				
-				SetSpritePosition(fogo,450,650)
-				SetSpriteVisible(fogo,0)
-				
+				SetSpriteSize(rastroAtivos[i].spriteid,40,rastroAtivos[i].tamanho)					
 			endif
 			if(rastroAtivos[i].tamanho<0)
 				DeleteSprite(rastroAtivos[i].spriteid)
 			endif		
 	endif
-	if(rastroAtivos[i].y>570 and rastroAtivos[i].X=620 and rastroAtivos[i].tamanho>0 and rastroAtivos[i].y>-10)
+	
+	if(rastroAtivos[i].y>570 and rastroAtivos[i].X=620 and rastroAtivos[i].tamanho>0 and rastroAtivos[i].y>-10)					 //verifica se o rastro ta no alcance do botao amarelo
 			if ( GetRawKeyState(74))
-				
 				rastroAtivos[i].tamanho = rastroAtivos[i].tamanho-10
 				SetSpriteSize(rastroAtivos[i].spriteid,40,rastroAtivos[i].tamanho)	
-				
-				SetSpritePosition(fogo,580,650)
-				SetSpriteVisible(fogo,0)
-				
 			endif
 			if(rastroAtivos[i].tamanho<0)
 				DeleteSprite(rastroAtivos[i].spriteid)
 			endif			
 	endif
-	if(rastroAtivos[i].y>570 and rastroAtivos[i].X=765 and rastroAtivos[i].tamanho>0 and rastroAtivos[i].y>-10)
+	
+	if(rastroAtivos[i].y>570 and rastroAtivos[i].X=765 and rastroAtivos[i].tamanho>0 and rastroAtivos[i].y>-10)				 //verifica se o rastro ta no alcance do botao azul
 			if ( GetRawKeyState(75))
-				
 				rastroAtivos[i].tamanho = rastroAtivos[i].tamanho-10
-				SetSpriteSize(rastroAtivos[i].spriteid,40,rastroAtivos[i].tamanho)	
-				
-				SetSpritePosition(fogo,720,650)
-				SetSpriteVisible(fogo,0)
-				
+				SetSpriteSize(rastroAtivos[i].spriteid,40,rastroAtivos[i].tamanho)			
 			endif
 			if(rastroAtivos[i].tamanho<0)
 				DeleteSprite(rastroAtivos[i].spriteid)
 			endif			
 	endif
-	if(rastroAtivos[i].y>570 and rastroAtivos[i].X=885 and rastroAtivos[i].tamanho>0 and rastroAtivos[i].y>-10)
+	
+	if(rastroAtivos[i].y>570 and rastroAtivos[i].X=885 and rastroAtivos[i].tamanho>0 and rastroAtivos[i].y>-10)				 //verifica se o rastro ta no alcance do botao laranja
 			if ( GetRawKeyState(76))
-					
 				rastroAtivos[i].tamanho = rastroAtivos[i].tamanho-10
 				SetSpriteSize(rastroAtivos[i].spriteid,40,rastroAtivos[i].tamanho)	
-				SetSpritePosition(fogo,857,650)
-				SetSpriteVisible(fogo,0)
+				
 			endif
 			if(rastroAtivos[i].tamanho<0)
 				DeleteSprite(rastroAtivos[i].spriteid)
@@ -372,13 +356,14 @@ perdeuNota: //pune a perda de nota e deleta ela
 		bonusreal=1
 		bonus=1
 		DeleteSprite(notasAtivas[i].spriteID)
+	
 			
 		
 	endif	
 	
 return
 
-marcascore:
+marcascore:   
 	
 	pontuacao = pontuacao + score * bonusreal
 	

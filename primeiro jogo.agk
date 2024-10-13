@@ -45,9 +45,9 @@ FILE_1=tela.agc;-1
 FILE_2=funcoesnotas.agc;-1
 
 [files]
-FILE_NAME_0=1;main.agc;6175;0
-FILE_NAME_1=0;tela.agc;20391;2
-FILE_NAME_2=0;funcoesnotas.agc;3757;1
+FILE_NAME_0=0;main.agc;4253;0
+FILE_NAME_1=0;tela.agc;25407;2
+FILE_NAME_2=1;funcoesnotas.agc;9248;1
 
 [project]
 description=
